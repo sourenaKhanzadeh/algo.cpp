@@ -4,62 +4,56 @@
 #include <sorting/sorting.hpp>
 #include <vector>
 
-std::vector<int> merge(std::vector<int> &left, std::vector<int> &right,
-                       const CMP cmp = L);
+// In-place merge function (optimized)
+void merge(std::vector<int> &arr, size_t start, size_t mid, size_t end,
+           CMP cmp) {
+  std::vector<int> left(arr.begin() + start, arr.begin() + mid);
+  std::vector<int> right(arr.begin() + mid, arr.begin() + end);
 
-std::vector<int> helper_msort(std::vector<int> &arr, size_t start, size_t end,
-                              const CMP cmp = L);
-std::vector<int> msort(std::vector<int> &arr, size_t _til, const CMP cmp = L) {
-  if (arr.empty())
-    return {};
-  return helper_msort(arr, 0, _til, cmp);
-}
+  size_t i = 0, j = 0, k = start;
 
-// Recursive Merge Sort function
-std::vector<int> helper_msort(std::vector<int> &arr, size_t start, size_t end,
-                              const CMP cmp) {
-  if (end - start <= 1) {
-    return {arr[start]};
-  }
-
-  size_t mid = start + (end - start) / 2;
-  std::vector<int> left = helper_msort(arr, start, mid, cmp);
-  std::vector<int> right = helper_msort(arr, mid, end, cmp);
-
-  return merge(left, right, cmp);
-}
-
-std::vector<int> merge(std::vector<int> &left, std::vector<int> &right,
-                       const CMP cmp) {
-  size_t l = 0, r = 0;
-  std::vector<int> res;
-
-  while (l < left.size() && r < right.size()) {
-    if (should_swap(left[l], right[r], cmp)) {
-      res.push_back(left[l]);
-      l++;
+  while (i < left.size() && j < right.size()) {
+    if (should_swap(left[i], right[j], cmp)) {
+      arr[k++] = std::move(left[i++]);
     } else {
-      res.push_back(right[r]);
-      r++;
+      arr[k++] = std::move(right[j++]);
     }
   }
 
-  while (l < left.size()) {
-    res.push_back(left[l]);
-    l++; // Fix: Increment l
-  }
-
-  while (r < right.size()) {
-    res.push_back(right[r]);
-    r++; // Fix: Increment r
-  }
-
-  return res;
+  while (i < left.size())
+    arr[k++] = std::move(left[i++]);
+  while (j < right.size())
+    arr[k++] = std::move(right[j++]);
 }
+
+// Recursive Merge Sort function (works on the same vector)
+void helper_msort(std::vector<int> &arr, size_t start, size_t end, CMP cmp) {
+  if (end - start <= 1)
+    return;
+
+  size_t mid = start + (end - start) / 2;
+  helper_msort(arr, start, mid, cmp);
+  helper_msort(arr, mid, end, cmp);
+  merge(arr, start, mid, end, cmp);
+}
+
+// Main Merge Sort function (calls recursive function)
+void msort(std::vector<int> &arr, CMP cmp = L) {
+  if (arr.empty())
+    return;
+  helper_msort(arr, 0, arr.size(), cmp);
+}
+
+// Main function
 int main() {
   std::vector<int> arr = {203, 10, 20, 30, 1, 2, 3, -1};
+  std::cout << "Original array: ";
   printArr(arr);
-  std::vector<int> v = msort(arr, arr.size(), GE);
-  printArr(v);
+
+  msort(arr, L); // Sort in ascending order
+
+  std::cout << "Sorted array: ";
+  printArr(arr);
+
   return EXIT_SUCCESS;
 }
