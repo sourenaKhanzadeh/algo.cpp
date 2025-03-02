@@ -5,7 +5,7 @@ project(algo_cpp
   DESCRIPTION "Algorithms done in C++"
   LANGUAGES CXX C
 )
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 message("algo.cpp Building SRC Files")
 message("===========================")
