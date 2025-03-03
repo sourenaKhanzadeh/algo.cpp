@@ -47,7 +47,8 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				}
 			],
@@ -66,12 +67,20 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				}
 			],
 			"targets" : 
 			[
+				{
+					"directoryIndex" : 2,
+					"id" : "bubble::@40caa17fb1c2ce28c3c7",
+					"jsonFile" : "target-bubble-d6e05486766b424f2dce.json",
+					"name" : "bubble",
+					"projectIndex" : 0
+				},
 				{
 					"directoryIndex" : 2,
 					"id" : "insertion::@40caa17fb1c2ce28c3c7",

@@ -14,3 +14,8 @@ message("Adding Executable: merge sort")
 message("==================================")
 add_executable(merge merge.cpp)
 target_include_directories(merge PUBLIC ${PROJECT_SOURCE_DIR}/include)
+
+message("Adding Executable: bubble sort")
+message("==================================")
+add_executable(bubble bubble.cpp)
+target_include_directories(bubble PUBLIC ${PROJECT_SOURCE_DIR}/include)
