@@ -22,7 +22,8 @@
 					"build" : "src",
 					"childIndexes" : 
 					[
-						2
+						2,
+						3
 					],
 					"jsonFile" : "directory-src-b6cf2213fc5053b67c22.json",
 					"minimumCMakeVersion" : 
@@ -46,9 +47,24 @@
 					"targetIndexes" : 
 					[
 						0,
-						1,
 						2,
-						3
+						3,
+						4
+					]
+				},
+				{
+					"build" : "src/math",
+					"jsonFile" : "directory-src.math-1c0eccccbdf187eb70a6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.19.2"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/math",
+					"targetIndexes" : 
+					[
+						1
 					]
 				}
 			],
@@ -60,7 +76,8 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					],
 					"name" : "algo_cpp",
 					"targetIndexes" : 
@@ -68,7 +85,8 @@
 						0,
 						1,
 						2,
-						3
+						3,
+						4
 					]
 				}
 			],
@@ -79,6 +97,13 @@
 					"id" : "bubble::@40caa17fb1c2ce28c3c7",
 					"jsonFile" : "target-bubble-d6e05486766b424f2dce.json",
 					"name" : "bubble",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "horner::@c3aed6c50cc997bcdd53",
+					"jsonFile" : "target-horner-5e0ec17713eda141528d.json",
+					"name" : "horner",
 					"projectIndex" : 0
 				},
 				{

@@ -211,6 +211,9 @@
 		},
 		{
 			"path" : "src/sorting/CMakeLists.txt"
+		},
+		{
+			"path" : "src/math/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",
